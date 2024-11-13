@@ -1,22 +1,30 @@
-# opening the book
-book_path = "books/frankenstein.txt"
-with open(book_path, 'r') as f:
-    # Read the file's content
-    file_contents = f.read()
+def main():
+    book_path = "books/frankenstein.txt"
+    print_book(book_path)
+    print_num_words(book_path)
 
-    # Print the content
-    print(file_contents)
+# Prints the entire book
+def print_book(book_path):
+    with open(book_path, 'r') as f:
+        # Read the file's content
+        file_contents = f.read()
 
-# Count how many words the book contains
-num_words = 0
+        # Print the content
+        print(file_contents)
 
-with open(book_path, 'r') as f:
-    # Grab each line
-    for line in f:
-        words = line.split()
+# Prints the number of words in a book
+def print_num_words(book_path):
+    with open(book_path, 'r') as f:
+        num_words = 0
 
-        # Add the number of elements per line to the count
-        num_words = num_words + len(words)
+        # Grab each line
+        for line in f:
+            words = line.split()
 
-print(f"There are {num_words} words in the book!")
+            # Add the number of elements per line to the count
+            num_words = num_words + len(words)
+
+    print(f"There are {num_words} words in the book!")
+
+main()
     
