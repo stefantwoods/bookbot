@@ -1,7 +1,10 @@
+import string
+
 def main():
     book_path = "books/frankenstein.txt"
-    print_book(book_path)
-    print_num_words(book_path)
+    #print_book(book_path)
+    #print_num_words(book_path)
+    count_chars(book_path)
 
 # Prints the entire book
 def print_book(book_path):
@@ -18,6 +21,7 @@ def print_num_words(book_path):
         num_words = 0
 
         # Grab each line
+
         for line in f:
             words = line.split()
 
@@ -25,6 +29,20 @@ def print_num_words(book_path):
             num_words = num_words + len(words)
 
     print(f"There are {num_words} words in the book!")
+
+def count_chars(book_path):
+    char_count = {letter: 0 for letter in string.ascii_lowercase}
+    # Grab the characters of the book
+    with open(book_path, 'r') as f:
+        for line in f:
+            for word in line:
+                for char in word:
+                    check = char.lower()
+                    # Check if the char is in the dict
+                    if check in char_count:
+                        char_count[check] = char_count[check] + 1
+    print(char_count)
+
 
 main()
     
