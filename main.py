@@ -3,8 +3,12 @@ import string
 def main():
     book_path = "books/frankenstein.txt"
     #print_book(book_path)
-    #print_num_words(book_path)
-    count_chars(book_path)
+    word_count = print_num_words(book_path)
+    my_dict = count_chars(book_path)
+    print(f"*****Begin report of {book_path}*****")
+    for key, value in my_dict.items():
+        print(f"The {key} character was found {value} times!!!")
+    print("*****END OF REPORT*****")
 
 # Prints the entire book
 def print_book(book_path):
@@ -28,7 +32,7 @@ def print_num_words(book_path):
             # Add the number of elements per line to the count
             num_words = num_words + len(words)
 
-    print(f"There are {num_words} words in the book!")
+    return num_words
 
 def count_chars(book_path):
     char_count = {letter: 0 for letter in string.ascii_lowercase}
@@ -41,7 +45,7 @@ def count_chars(book_path):
                     # Check if the char is in the dict
                     if check in char_count:
                         char_count[check] = char_count[check] + 1
-    print(char_count)
+    return char_count
 
 
 main()
